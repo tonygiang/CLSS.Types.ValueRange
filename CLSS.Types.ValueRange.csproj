@@ -10,6 +10,11 @@
     <RepositoryUrl>https://github.com/tonygiang/CLSS.Types.ValueRange</RepositoryUrl>
     <PackageTags>CLSS</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>
+      - Improved comment.
+      - Added language-sensitive syntax highlighting in README file.
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

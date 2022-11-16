@@ -4,7 +4,7 @@
 
 Structs can be used as dictionary keys. And a legitimate use case of structs as dictionary keys is to create branching code paths that can be changed at runtime as opposed to `switch-case` expression which necessarily requires hard-coding your code paths.
 
-```
+```csharp
 // You can't change these branching conditions at runtime
 switch (responseCode)
 {
@@ -42,7 +42,7 @@ The fairly new [`ValueTuple`](https://docs.microsoft.com/en-us/dotnet/api/system
 
 `ValueRange` implements `IEquatable<T>` and therefore it's ready to be used as dictionary keys.
 
-```
+```csharp
 using System;
 
 Dictionary<ValueRange<Version>, Action> VersionMigrationPaths = new Dictionary<ValueRange<Version>, Action>()

@@ -5,7 +5,7 @@ using System;
 namespace CLSS
 {
   /// <summary>
-  /// A serialiable and equatable pair of 2 values semantically representing a
+  /// A serializable and equatable pair of 2 values semantically representing a
   /// range of values.
   /// </summary>
   /// <typeparam name="T">The type of comparable values represented by
@@ -24,7 +24,7 @@ namespace CLSS
     public T Max;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ValueRange{T}"/> with its
+    /// Initializes a new instance of <see cref="ValueRange{T}"/> with its
     /// Min and Max fields initialized.
     /// </summary>
     /// <param name="min">The initial value of the Min field.</param>
