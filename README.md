@@ -53,4 +53,17 @@ Dictionary<ValueRange<Version>, Action> VersionMigrationPaths = new Dictionary<V
 };
 ```
 
+Since version 1.1, this package also includes the `Encapsulate` extension method to grow a `ValueRange` to include more values. It can take in a `params` argument list of `IComparable<T>`s or other `ValueRange`s.
+
+```csharp
+using CLSS;
+
+var numbers = new int[] { 6, -11, -2, 4, 9 };
+var numbersRange = new ValueRange<int>(numbers[0], numbers[0]);
+numbersRange = numbersRange.Encapsulate(numbers); // Min: -11, Max: 9
+var anotherRange1 = new ValueRange<int>(0, 16);
+var anotherRange2 = new ValueRange<int>(-12, 0);
+numbersRange = numbersRange.Encapsulate(anotherRange1, anotherRange2); // Min: -12, Max: 16
+```
+
 ##### This package is a part of the [C# Language Syntactic Sugar suite](https://github.com/tonygiang/CLSS).

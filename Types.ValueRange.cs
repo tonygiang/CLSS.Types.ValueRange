@@ -37,4 +37,47 @@ namespace CLSS
         && this.Max.CompareTo(other.Max) == 0;
     }
   }
+
+  public static partial class ValueRangeExtension
+  {
+    /// <summary>
+    /// Returns a <see cref="ValueRange{T}"/> that contains the specified values
+    /// and the source <see cref="ValueRange{T}"/>'s Min and Max values.
+    /// </summary>
+    /// <typeparam name="T"><inheritdoc cref="ValueRange{T}"/></typeparam>
+    /// <param name="source">The source <see cref="ValueRange{T}"/></param>
+    /// <param name="values">The value that will be encapsulated </param>
+    /// <returns>A <see cref="ValueRange{T}"/> that contains the specified
+    /// values and the source <see cref="ValueRange{T}"/>'s Min and Max values.
+    /// </returns>
+    public static ValueRange<T> Encapsulate<T>(this ValueRange<T> source,
+      params T[] values) where T : IComparable<T>
+    {
+      foreach (var v in values)
+      {
+        if (v.CompareTo(source.Min) < 0) source.Min = v;
+        if (v.CompareTo(source.Max) > 0) source.Max = v;
+      }
+      return source;
+    }
+
+    /// <summary>
+    /// Returns a <see cref="ValueRange{T}"/> that contains the Min and Max
+    /// values of the specified ranges and the source
+    /// <see cref="ValueRange{T}"/>.
+    /// </summary>
+    /// <typeparam name="T"><inheritdoc cref="ValueRange{T}"/></typeparam>
+    /// <param name="source">
+    /// <inheritdoc cref="Encapsulate{T}(ValueRange{T}, T[])"/></param>
+    /// <param name="ranges">The ranges that will be encapsulated.</param>
+    /// <returns>A <see cref="ValueRange{T}"/> that contains the Min and Max
+    /// values of the specified ranges and the source
+    /// <see cref="ValueRange{T}"/>.</returns>
+    public static ValueRange<T> Encapsulate<T>(this ValueRange<T> source,
+      params ValueRange<T>[] ranges) where T : IComparable<T>
+    {
+      foreach (var r in ranges) source = source.Encapsulate(r.Min, r.Max);
+      return source;
+    }
+  }
 }
